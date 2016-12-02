@@ -1,4 +1,4 @@
-import mailbox
+import mailbox  ##I made an update
 
 
 # CODE Reference: http://stackoverflow.com/questions/7166922/extracting-the-body-of-an-email-from-mbox-file-decoding-it-to-plain-text-regard
