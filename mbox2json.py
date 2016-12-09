@@ -48,32 +48,38 @@ if __name__ == '__main__':
 
 #    c = 0  ##counter for testing
 
-    for thisemail in mailbox.mbox('./Takeout/Mail/UMSI-Open.mbox'):
+    for thisemail in mailbox.mbox('UMSI-Open.mbox'):
         ## E.mail text and metadata
         email = {}
 
         body = getbodyfromemail(thisemail)
-        print '******************************************'
-        print thisemail['subject']
-        email['subject'] = thisemail['subject']
-        print thisemail['Date']
-        email['date'] = thisemail['Date']
+        #print '******************************************'
+        #print thisemail['subject']
+        email['subject'] = unicode(thisemail['subject'], errors='ignore')
+        #print thisemail['Date']
+        email['date'] = unicode(thisemail['Date'], errors='ignore')
         if thisemail['To']:
-            print "TO: " + thisemail['To']
-            email['to'] = thisemail['To']
+        #    print "TO: " + thisemail['To']
+            email['to'] = unicode(thisemail['To'], errors='ignore')
         if thisemail['From']:
-            print "FROM: " + thisemail['From']
-            email['from'] = thisemail['From']
-        print
-        print body
-        email['body'] = body
+        #    print "FROM: " + thisemail['From']
+            email['from'] = unicode(thisemail['From'], errors='ignore')
+        #print
+        #print body
+        try:
+            email['body'] = unicode(body, errors='ignore')
+        except:
+            email['body'] = "NONE"
         emails.append(email)
 #        c += 1
 #        if c > 10:
 #            break
-
-#    print json.dumps(emails)
+    #final_emails = []
+    #for email in emails:
+    #    final_emails.append(unicode(email, errors='ignore'))
+    print json.dumps(emails)
     ## JSON file for output
-#    JSONoutput = open('email.json', 'w')
+    JSONoutput = open('email.json', 'w')
 
-#    JSONoutput.write(json.dumps(emails))
+    JSONoutput.write(json.dumps(emails))
+
