@@ -1,6 +1,7 @@
 import json
 
-def main():
+## Loads email data from JSON file
+def load():
     ## Open JSON file
     inFile = open('email.json', 'rU')
 
@@ -15,9 +16,4 @@ def main():
     for email in jsonEmails:
         emails[email['subject']] = email['body']
 
-    print emails
-
-    return
-
-if __name__ == '__main__':
-    main()
+    return emails
