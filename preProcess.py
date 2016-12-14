@@ -46,7 +46,7 @@ def load():
 
 
         # Remove File Links
-        #emails[email['subject']] = re.sub(r'<file?:\/\/.*[\r\n]*', '', emails[email['subject']], flags=re.MULTILINE)
+        emails[email['subject']] = re.sub(r'<file?:\/\/.*[\r\n]*', '', emails[email['subject']], flags=re.MULTILINE)
         #emails[email['subject']] = zp.parse(emails[email['subject']])
 
     return emails
