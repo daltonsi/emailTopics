@@ -5,6 +5,8 @@ import preProcess
 
 
 def print_top_words(model, feature_names, n_top_words):
+    ## function code credit:  http://scikit-learn.org/stable/auto_examples/
+    #  applications/topics_extraction_with_nmf_lda.html
     for topic_idx, topic in enumerate(model.components_):
         print("Topic #%d:" % topic_idx)
         print(" ".join([feature_names[i]
